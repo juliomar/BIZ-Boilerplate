@@ -1,0 +1,26 @@
+{
+    "ApiModule": {
+        "BaseUrl": "http://+:2001/tms/api",
+        "Middleware": {
+            "Jwt": {
+                "ExpectedIssuers": [
+                    "http://localhost:2001/tms/auth"
+                ],
+                "ExpectedAudiences": [
+                    "http://localhost:2001/tms/api"
+                ]
+            }
+        }
+    },
+    "AuthModule": {
+        "BaseUrl": "http://+:2001/tms/auth",
+        "SigningKeyId": "404964ad925b462c891b732813162705"
+    },
+    "Service": {
+        "Name": "XDataService",
+        "DisplayName": "TMS XData Local Server",
+        "Description": "Runs TMS XData API server local debug mode"
+    },
+    "RSAKeysFolder": "..\\..\\config\\local\\keys",
+    "SecretsFile": "..\\..\\config\\local\\secrets.json"
+}
