@@ -11,7 +11,6 @@ type
   [ServiceImplementation]
   TSampleService = class(TInterfacedObject, ISampleService)
   public
-    { ISampleService methods }
     function EchoString(const Value: string): string;
     function Add(const A, B: Double): Double;
   end;

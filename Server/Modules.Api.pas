@@ -20,6 +20,8 @@ type
     procedure JWTGetSecretEx(Sender: TObject; const JWT: TJWT; Context: THttpServerContext;
       var Secret: TBytes);
     procedure ApiServerGenericRequest(Sender: TObject; Context: THttpServerContext; Next: THttpServerProc);
+    procedure ApiServerModuleException(Sender: TObject;
+      Args: TModuleExceptionArgs);
   private
     procedure ConfigureJwtMiddleware(Config: TJwtMiddlewareConfig; Middleware: TSparkleJwtMiddleware);
   public
@@ -33,8 +35,13 @@ implementation
 {%CLASSGROUP 'System.Classes.TPersistent'}
 
 uses
-  System.IOUtils, Bcl.Jose.Consumer, Bcl.Utils, Bcl.Logging, Bcl.Json.BaseObjectConverter,
-  Utils.RSAKeyStorage;
+  System.IOUtils,
+  Bcl.Jose.Consumer,
+  Bcl.Utils,
+  Bcl.Logging,
+  Bcl.Json.BaseObjectConverter,
+  Utils.RSAKeyStorage,
+  Services.ProblemDetail;
 
 {$R *.dfm}
 
@@ -70,6 +77,15 @@ begin
       Response.Headers.SetValue('Server-Version', '1');
     end);
   Next(Context);
+end;
+
+procedure TMainModule.ApiServerModuleException(Sender: TObject;
+  Args: TModuleExceptionArgs);
+begin
+  if TProblemDetailExceptionHandler.HandleModuleException(Args) then
+    Exit;
+
+  // not a problem detail exception, do something else, if needed
 end;
 
 procedure TMainModule.ConfigureJwtMiddleware(Config: TJwtMiddlewareConfig; Middleware: TSparkleJwtMiddleware);

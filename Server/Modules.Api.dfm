@@ -8,6 +8,7 @@ object MainModule: TMainModule
     EntitySetPermissions = <>
     SwaggerOptions.Enabled = True
     SwaggerUIOptions.Enabled = True
+    OnModuleException = ApiServerModuleException
     Left = 56
     Top = 56
     object ApiServerGeneric: TSparkleGenericMiddleware

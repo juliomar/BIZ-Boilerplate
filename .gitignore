@@ -74,3 +74,4 @@ dunit.ini
 *.deployproj
 *.dsv
 Server/WinServer.res
+WinServer.log
