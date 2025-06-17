@@ -116,6 +116,7 @@
         </DCCReference>
         <DCCReference Include="Config.Secrets.pas"/>
         <DCCReference Include="Utils.RSAKeyStorage.pas"/>
+        <DCCReference Include="Services.ProblemDetail.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

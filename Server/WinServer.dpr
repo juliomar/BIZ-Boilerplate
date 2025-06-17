@@ -10,7 +10,8 @@ uses
   Services.Sample.Impl in 'Services.Sample.Impl.pas',
   Modules.Auth in 'Modules.Auth.pas' {AuthModule: TDataModule},
   Config.Secrets in 'Config.Secrets.pas',
-  Utils.RSAKeyStorage in 'Utils.RSAKeyStorage.pas';
+  Utils.RSAKeyStorage in 'Utils.RSAKeyStorage.pas',
+  Services.ProblemDetail in 'Services.ProblemDetail.pas';
 
 {$R *.res}
 
